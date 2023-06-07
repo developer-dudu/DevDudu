@@ -1,0 +1,30 @@
+//1.Name i ‘United’ sıralı 6 karakteri ile başlayan tüm accountların id,name,annual revenue fieldlarını getirin
+SELECT Id, Name, AnnualRevenue FROM Account where name like 'United';
+
+//2.Name i ‘United%’ sıralı 7 karakteri ile tam eşleşen tüm accountların id,name,annual revenue fieldlarını getirin
+SELECT Id, Name, AnnualRevenue FROM Account where name like '%United%';
+
+//3.Name i ‘United%’ sıralı 7 karakteri başlayan tüm accountların id,name,annual revenue fieldlarını getirin.
+SELECT Id, Name, AnnualRevenue FROM Account where name like 'United%' ;
+
+//4.Annual Revenue field ı en yüksek olan ilk 3 account u getirin.
+SELECT id, name, annualrevenue FROM account where annualrevenue!=null ORDER BY AnnualRevenue DESC LIMIT 3;
+
+//5.En son create edilen account un name,rating ve phone bilgilerini getirin.
+SELECT Id, Name, Phone, Rating, CreatedDate FROM Account LIMIT 1;
+
+
+//6.Title ı VP yi içeren contact ların name,email ve account name bilgilerini getir.
+SELECT Id, Title, Name, Email, account.name FROM Contact where title LIKE '%VP%';
+
+//7.’Closed-Won’ olan tüm opportunity lerin name,amount ve close date bilgilerini getirin.
+SELECT Id, Name, StageName, Amount, CloseDate FROM Opportunity where stageName LIKE 'Closed Won';
+
+//8.Amount u 100,00 den büyük olan tüm opportunity leri getirin.
+SELECT Id, Name, Amount FROM Opportunity where Amount > 100000;
+
+//9.Account type ı customer direct olan tüm opportuniy lerin name,accouhnt name,account rating bilgilerini getir.
+SELECT account.name ,account.rating FROM Opportunity where Account.Type= 'Customer-Direct';
+
+//10.Salesforce Project status ü completed olan tüm salesforce ticket ların subject,status ve record type bilgilerini getirin.
+SELECT subject__c, status__c, salesforce_project__r.project_name__c, salesforce_project__r.status__c ,recordtypeid FROM salesforce_ticket__c where salesforce_project__r.status__c= 'Copmleted';
